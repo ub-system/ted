@@ -26,7 +26,6 @@ class _BasePageState extends State<BasePage> {
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
           children: const [
-            HomePage(),
             CategoryPage(),
             UserPage(),
           ],
@@ -44,10 +43,6 @@ class _BasePageState extends State<BasePage> {
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.white.withAlpha(150),
           items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'Home',
-            ),
             BottomNavigationBarItem(
               icon: Icon(Icons.list_alt),
               label: 'Categorias',
