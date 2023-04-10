@@ -2,21 +2,21 @@ import 'dart:convert';
 
 class UserModel {
   int? id;
-  String? name;
-  String? email;
-  String? password;
-  bool? isAdmin;
-  DateTime? createdAt;
-  String? token;
+  String name;
+  String email;
+  // String? password;
+  // bool? isAdmin;
+  // DateTime? createdAt;
+  // String? token;
 
   UserModel({
     this.id,
-    this.name,
-    this.email,
-    this.password,
-    this.isAdmin,
-    this.createdAt,
-    this.token,
+    this.name='',
+    this.email='',
+    // this.password,
+    // this.isAdmin,
+    // this.createdAt,
+    // this.token,
   });
 
   Map<String, dynamic> toMap() {
@@ -24,10 +24,10 @@ class UserModel {
       'id': id,
       'name': name,
       'email': email,
-      'password': password,
-      'is_admin': isAdmin,
-      'created_at': createdAt?.millisecondsSinceEpoch,
-      'token': token,
+      // 'password': password,
+      // 'is_admin': isAdmin,
+      // 'created_at': createdAt?.millisecondsSinceEpoch,
+      // 'token': token,
     };
   }
 
@@ -36,10 +36,10 @@ class UserModel {
       id: map['id']?.toInt(),
       name: map['name'],
       email: map['email'],
-      password: map['password'],
-      isAdmin: map['isAdmin'],
-      createdAt: map['createdAt'] != null ? DateTime.fromMillisecondsSinceEpoch(map['createdAt']) : null,
-      token: map['token'],
+      // password: map['password'],
+      // isAdmin: map['isAdmin'],
+      // createdAt: map['createdAt'] != null ? DateTime.fromMillisecondsSinceEpoch(map['createdAt']) : null,
+      // token: map['token'],
     );
   }
 

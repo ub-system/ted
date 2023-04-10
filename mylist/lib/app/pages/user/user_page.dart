@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mylist/app/models/user_model.dart';
-import 'package:mylist/app/repositories/user_repository.dart';
 import 'package:mylist/app/controllers/user_controller.dart';
 
 class UserPage extends StatefulWidget {
@@ -11,7 +10,7 @@ class UserPage extends StatefulWidget {
 }
 
 class UserPageState extends State<UserPage> {
-  List<UserModel>? _listUser = [];
+  List<UserModel> _listUser = [];
 
   @override
   void initState() {
@@ -20,7 +19,7 @@ class UserPageState extends State<UserPage> {
   }
 
   Future<void> _loadUsers() async {
-    final users = await UserRepository().getAll();
+    final users = await UserController().getUsers();
     setState(() {
       _listUser = users;
     });
@@ -28,23 +27,18 @@ class UserPageState extends State<UserPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (_listUser == null) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    }
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Lista de Usuários'),
       ),
       body: ListView.builder(
-        itemCount: _listUser?.length,
+        itemCount: _listUser.length,
         itemBuilder: (BuildContext context, int index) {
           final user = _listUser[index];
           return ListTile(
-            title: Text(user?.name),
-            subtitle: Text(user?.email),
+            title: Text(user.name),
+            subtitle: Text(user.email),
             // ...
           );
         },

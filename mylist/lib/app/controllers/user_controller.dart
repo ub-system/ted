@@ -9,7 +9,7 @@ class UserController extends GetxController {
   RxList<UserModel> listCategories = RxList<UserModel>([]);
   RxBool isLoading = false.obs;
 
-  Future getCategories() async {
+  Future getUsers() async {
     isLoading.value = true;
     List<UserModel> result = await repository.getAll();
     if (result.isNotEmpty) {
