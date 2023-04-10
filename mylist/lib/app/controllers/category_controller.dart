@@ -12,11 +12,8 @@ class CategoryController extends GetxController {
   Future getCategories() async {
     isLoading.value = true;
     List<CategoryModel> result = await repository.getAll();
-    if (result.isNotEmpty) {
-      listCategories.assignAll(result);
-    } else {
-      print("Erro ao retornar os dados");
-    }
+   
     isLoading.value = false;
+    return result;
   }
 }

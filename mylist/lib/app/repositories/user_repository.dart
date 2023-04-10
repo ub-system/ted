@@ -14,25 +14,10 @@ class UserRepository {
       List list = response['data'];
 
       List<UserModel> userList = UserModel.fromList(list);
-
+      
       return userList;
     } else {
       return [];
     }
-  }
-
-  Future<UserModel> getById(int id) async {
-    UserModel model = UserModel();
-
-    final response = await httpManager.request(
-      url: "https://ilearn.appke.com.br/api/categories/$id",
-      method: HttpMethods.get,
-    );
-
-    if (response['data'] != null) {
-      model = UserModel.fromJson(response['data']);
-    }
-
-    return model;
   }
 }

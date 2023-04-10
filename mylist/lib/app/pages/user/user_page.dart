@@ -27,12 +27,12 @@ class UserPageState extends State<UserPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Lista de Usuários'),
       ),
-      body: ListView.builder(
+      body: _listUser.isNotEmpty ? 
+       ListView.builder(
         itemCount: _listUser.length,
         itemBuilder: (BuildContext context, int index) {
           final user = _listUser[index];
@@ -42,7 +42,8 @@ class UserPageState extends State<UserPage> {
             // ...
           );
         },
-      ),
+      ) : 
+      const Center(child: CircularProgressIndicator())
     );
   }
 }

@@ -2,11 +2,11 @@ import 'dart:convert';
 
 class CategoryModel {
   int? id;
-  String? name;
+  String name;
 
   CategoryModel({
     this.id,
-    this.name,
+    required this.name,
   });
 
   Map<String, dynamic> toMap() {

@@ -21,19 +21,4 @@ class CategoryRepository {
       return [];
     }
   }
-
-  Future<CategoryModel> getById(int id) async {
-    CategoryModel model = CategoryModel();
-
-    final response = await httpManager.request(
-      url: "https://ilearn.appke.com.br/api/categories/$id",
-      method: HttpMethods.get,
-    );
-
-    if (response['data'] != null) {
-      model = CategoryModel.fromJson(response['data']);
-    }
-
-    return model;
-  }
 }

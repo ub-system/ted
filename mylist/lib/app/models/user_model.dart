@@ -4,19 +4,11 @@ class UserModel {
   int? id;
   String name;
   String email;
-  // String? password;
-  // bool? isAdmin;
-  // DateTime? createdAt;
-  // String? token;
 
   UserModel({
-    this.id,
-    this.name='',
-    this.email='',
-    // this.password,
-    // this.isAdmin,
-    // this.createdAt,
-    // this.token,
+    required this.id,
+    required this.name,
+    required this.email,
   });
 
   Map<String, dynamic> toMap() {
@@ -24,10 +16,6 @@ class UserModel {
       'id': id,
       'name': name,
       'email': email,
-      // 'password': password,
-      // 'is_admin': isAdmin,
-      // 'created_at': createdAt?.millisecondsSinceEpoch,
-      // 'token': token,
     };
   }
 
