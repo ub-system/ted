@@ -26,8 +26,6 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      //initialRoute: AppRoutes.splash,
-      //getPages: AppPages.pages,
       home: const BasePage(),
     );
   }
