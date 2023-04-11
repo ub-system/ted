@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mylist/app/pages/user/user_page.dart';
 
 import '../core/app_colors.dart';
-//import 'app/core/app_colors.dart';
 import 'category/category_page.dart';
-import 'home/home_page.dart';
 
 
 class BasePage extends StatefulWidget {
@@ -25,7 +23,7 @@ class _BasePageState extends State<BasePage> {
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
-          children: const [
+          children: [
             CategoryPage(),
             UserPage(),
           ],

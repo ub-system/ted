@@ -1,48 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:mylist/app/controllers/category_controller.dart';
-import 'package:mylist/app/models/category_model.dart';
+import 'package:get/get.dart';
 
-class CategoryPage extends StatefulWidget{
-  const CategoryPage({super.key});
+import '../../controllers/category_controller.dart';
 
-  @override
-  CategoryPageState createState() => CategoryPageState();
-}
-
-class CategoryPageState extends State<CategoryPage> {
-  List<CategoryModel> _listCategory = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _loadUsers();
-  }
-
-  Future<void> _loadUsers() async {
-    final categories = await CategoryController().getCategories();
-    setState(() {
-      _listCategory = categories;
-    });
-  }
+class CategoryPage extends StatelessWidget {
+  CategoryPage({super.key});
+  final controller = Get.put(CategoryController());
 
   @override
   Widget build(BuildContext context) {
+    controller.getCategories();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Lista de Categorias'),
-      ),
-      body: _listCategory.isNotEmpty ? 
-       ListView.builder(
-        itemCount: _listCategory.length,
-        itemBuilder: (BuildContext context, int index) {
-          final category = _listCategory[index];
-          return ListTile(
-            title: Text(category.name)
-            // ...
-          );
-        },
-      ) : 
-      const Center(child: CircularProgressIndicator())
-    );
+        appBar: AppBar(
+          title: const Text('Lista de Categorias'),
+        ),
+        body: Obx(() {
+          if (controller.isLoading.value) {
+            return const Center(child: CircularProgressIndicator());
+          } else {
+            return ListView.builder(
+              itemBuilder: (context, index) => Card(
+                  child: ListTile(
+                      title: Text(
+                controller.listCategories[index].name,
+              ))),
+              itemCount: controller.listCategories.length,
+            );
+          }
+        }));
   }
 }

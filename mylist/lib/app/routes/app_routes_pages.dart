@@ -13,11 +13,11 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.category,
-      page: () => const CategoryPage(),
+      page: () => CategoryPage(),
     ),
     GetPage(
       name: AppRoutes.user,
-      page: () => const UserPage(),
+      page: () => UserPage(),
     ),
     GetPage(
       name: AppRoutes.home,

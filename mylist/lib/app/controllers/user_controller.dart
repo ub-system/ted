@@ -12,8 +12,13 @@ class UserController extends GetxController {
   Future getUsers() async {
     isLoading.value = true;
     List<UserModel> result = await repository.getAll();
+
+    if (result.isNotEmpty) {
+      listUsers.assignAll(result);
+    } else {
+      print("Erro ao retornar os dados");
+    }
     
     isLoading.value = false;
-    return result;
   }
 }
