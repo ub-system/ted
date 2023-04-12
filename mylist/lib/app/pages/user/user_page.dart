@@ -22,14 +22,17 @@ class UserPage extends StatelessWidget {
               itemBuilder: (context, index) => Card(
                   child: ListTile(
                       title: Text(
-                controller.listUsers[index].name,
-              ),
-              subtitle: Text(
-                controller.listUsers[index].email,
-              ))),
+                        controller.listUsers[index].name,
+                      ),
+                      subtitle: Text(
+                        controller.listUsers[index].email,
+                      ),
+                  )
+                ),
               itemCount: controller.listUsers.length,
             );
           }
-        }));
+        })
+      );
   }
 }
